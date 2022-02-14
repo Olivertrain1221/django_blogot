@@ -1,7 +1,11 @@
 {% extends 'base.html' %} {% block content %}
 
 {% load crispy_forms_tags %}
-
+{% if commented %}
+    <div class="alert alert-success" role="alert" id="msg">
+    Success finally got it to work
+    </div>
+{% endif %}
 <div class="masthead">
     <div class="container">
         <div class="row g-0">
@@ -11,6 +15,7 @@
                 <!-- Post author goes before the | the post's created date goes after -->
                 <p class="post-subtitle">{{ post.author }} | {{ post.created_on }}</p>
             </div>
+            
             <div class="d-none d-md-block col-md-6 masthead-image">
                 <!-- The featured image URL goes in the src attribute -->
                 {% if "placeholder" in post.featured_image.url %}
@@ -19,19 +24,6 @@
                 <img src=" {{ post.featured_image.url }}" width="100%">
                 {% endif %}
             </div>
-        </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 offset-md-2">
-            {% for message in messages %}
-            <div class="alert {{ message.tags }} alert-dismissible fade show" id="msg" role="alert">
-                {{ message | safe }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-            {% endfor %}
         </div>
     </div>
 </div>
