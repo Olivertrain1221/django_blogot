@@ -25,6 +25,19 @@
 
 <div class="container">
     <div class="row">
+        <div class="col-md-8 offset-md-2">
+            {% for message in messages %}
+            <div class="alert {{ message.tags }} alert-dismissible fade show" id="msg" role="alert">
+                {{ message | safe }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
         <div class="col card mb-4  mt-3 left  top">
             <div class="card-body">
                 <!-- The post content goes inside the card-text. -->
@@ -102,7 +115,7 @@
                 <!-- For later -->
                 {% if commented %}
                 <div class="alert alert-success" role="alert">
-                    Your comment is awaiting aproval
+                    Your comment is awaiting approval
                 </div>
                 {% else %}
 
@@ -110,7 +123,7 @@
 
                 <h3>Leave a comment:</h3>
                 <p>Posting as: {{ user.username }}</p>
-                <form method="post" style="margim-top: 1.3em;">
+                <form method="post" style="margin-top: 1.3em;">
                     {{ comment_form | crispy }}
                     {% csrf_token %}
                     <button type="submit" class="btn btn-signup btn-lg">Submit</button>

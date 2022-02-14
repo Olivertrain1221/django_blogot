@@ -100,7 +100,10 @@ body {
     margin-top: 20%;
     margin-left: 5%;
 }
-
+/* 
+.green {
+    background-color: rgba(3, 140, 71, 0.3) */
+}
 .post-subtitle {
     margin-left: 5%;
     color: lightgray;
